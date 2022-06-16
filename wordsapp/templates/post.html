@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>英単語登録</title>
+</head>
+<body>
+<h3>英単語を登録してください</h3>
+
+{% block contents %}
+<form method="POST">
+        {% csrf_token %}
+        <table>
+        <tr>
+            <th>カテゴリ</th>
+            <td>{{ form.category }}</td>
+        </tr>
+        <tr>
+            <th>英単語</th>
+            <td>{{ form.question }}</td>
+        </tr>
+        <tr>
+            <th>意味</th>
+            <td>{{ form.answer }}</td>
+        </tr>
+        </table>
+        <hr>
+        <button type="submit">登録する</button>
+    </form>        
+      {% endblock %}
+</body>
+</html>

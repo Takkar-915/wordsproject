@@ -138,8 +138,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/login_success'
 
 
-EMAIL_HOST = 'yurisuki915@gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = '原田崇伸'
-EMAIL_HOST_PASSWORD = 'kono3107'
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_USE_TLS = True 
+EMAIL_HOST_USER = 'yurisuki915@gmail.com' 
+EMAIL_HOST_PASSWORD = 'abzyjvtgqtfuoveb' 
+EMAIL_PORT = 587 
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
