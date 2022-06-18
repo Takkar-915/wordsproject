@@ -8,4 +8,4 @@ class PostForm(ModelForm):
     
     class Meta:
         model = Post
-        fields = ['category','question','answer']
+        fields = ['category','question','answer','memory']

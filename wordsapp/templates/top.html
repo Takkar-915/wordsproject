@@ -2,17 +2,42 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>単語帳ページ</title>
+    <title>マイ単語帳</title>
 </head>
 <body>
-<h3>単語帳ページ</h3>
+<h2>マイ単語帳</h2>
+<p><a href="{% url 'accounts:logout' %}">ログアウト</a></p>
 <p><a href="{% url 'wordsapp:post' %}">英単語追加</a></p>
 
-
-    
-  
-      
 </body>
-    
+
+<form action="" method="get">
+    <input name="query" value="{{ request.GET.query }}" type="text">
+    <button type="submit">検索する</button>
+</form>
+
+
+
+  <table border="2">
+    <tr>
+        <th>英単語</th>
+        <th>品詞</th>
+        <th>意味</th>
+        <th>暗記済み</th>
+        <th>編集</th>
+        <th>削除</th>
+    </tr>
+    {% for data in object_list %}
+        <tr>
+            <td>{{ data.question }}</td>
+            <td>{{ data.category }}</td>
+            <td>{{ data.answer }}</td>
+            <td>{{ data.memory }}</td>
+            <td><a href="{% url 'wordsapp:update' data.pk %}">編集</a></td>
+            <td><a href="{% url 'wordsapp:delete' data.pk %}">削除</a></td>
+        </tr>
+    {% endfor %}
+</table>
+</div>
 </body>
 </html>

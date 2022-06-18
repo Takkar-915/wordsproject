@@ -37,16 +37,23 @@ class Post(models.Model):
     )
 
 
-    question = models.TextField(
-        verbose_name= '英単語'
+    question = models.CharField(
+        verbose_name= '英単語',
+        max_length= 20
     )
-    answer = models.TextField(
-        verbose_name= '意味'
+    answer = models.CharField(
+        verbose_name= '意味',
+        max_length= 40
     )
 
     posted_at = models.DateTimeField(
         verbose_name= '登録日時',
         auto_now_add=True
+    )
+
+    memory = models.BooleanField(
+        verbose_name= '暗記済み',
+        default= False
     )
 
     def __str__(self):

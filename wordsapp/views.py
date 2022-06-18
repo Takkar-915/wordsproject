@@ -1,13 +1,15 @@
-from pyexpat import model
+from unicodedata import category
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
-from django.views.generic import CreateView
+from django.views.generic import CreateView,ListView,UpdateView,DeleteView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from requests import request
 
 from wordsapp.forms import PostForm
 from .models import Category,Post
+from django.db.models import Q
 
 # Create your views here.
 
@@ -15,22 +17,29 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 @method_decorator(login_required, name='dispatch')
-class TopView(TemplateView):
+class TopView(ListView):
     template_name = 'top.html'
 
     model = Post
-    paginate_by = 10
     
+
     def get_queryset(self):
-        return Post.objects.order_by('-posted_at')
-    
-    
+        q_word = self.request.GET.get('query')
+
+        if q_word:
+            object_list = Post.objects.filter(user = self.request.user).order_by('-posted_at')
+            object_list = Post.objects.filter(Q(question__icontains=q_word) | Q(answer__icontains=q_word))
+            
+        else:
+            object_list = Post.objects.filter(user = self.request.user).order_by('-posted_at')
+        return object_list
+
 
 @method_decorator(login_required, name='dispatch')
 class CreateView(CreateView):
     form_class = PostForm
-    template_name = "post.html"
-    success_url = reverse_lazy('wordsapp:post_done')
+    template_name = 'post.html'
+    success_url = reverse_lazy('wordsapp:top')
 
     def form_valid(self, form):
         postdata = form.save(commit=False)
@@ -41,7 +50,33 @@ class CreateView(CreateView):
         # 戻り値はスーパークラスのform_valid()の戻り値(HttpResponseRedirect)
         return super().form_valid(form)
 
+
+@method_decorator(login_required, name='dispatch')
+class DataUpdateView(UpdateView):
+    template_name = 'update.html'
+    model = Post
+    fields = ['category','question','answer','memory']
+    success_url = reverse_lazy('wordsapp:top')
+
+    def form_valid(self, form):
+        postdata = form.save(commit=False)
+        # 投稿ユーザーのidを取得してモデルのuserフィールドに格納
+        postdata.user = self.request.user
+        # 投稿データをデータベースに登録
+        postdata.save()
+        # 戻り値はスーパークラスのform_valid()の戻り値(HttpResponseRedirect)
+        return super().form_valid(form)
+ 
+
+
+
+@method_decorator(login_required, name='dispatch')
+class DataDeleteView(DeleteView):
+    template_name = 'delete.html'
+    model = Post
+    success_url = reverse_lazy('wordsapp:top')
+
+
+@method_decorator(login_required, name='dispatch')
 class PostSuccessView(TemplateView):
     template_name ='post_success.html'
-
-

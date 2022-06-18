@@ -5,7 +5,7 @@
     <title>英単語登録</title>
 </head>
 <body>
-<h3>英単語を登録してください</h3>
+<h3>編集画面</h3>
 
 {% block contents %}
 <form method="POST">
@@ -29,8 +29,10 @@
         </tr>
         </table>
         <hr>
-        <button type="submit">登録する</button>
+        <button type="submit">変更する</button>
     </form>        
       {% endblock %}
+
+      <p><a href="{% url 'wordsapp:top' %}">変更せずに戻る</a></p>
 </body>
 </html>
