@@ -31,8 +31,7 @@ class TopView(ListView):
         q_word = self.request.GET.get('query')
 
         if q_word:
-            object_list = Post.objects.filter(user = self.request.user).order_by('memory','-posted_at')
-            object_list = Post.objects.filter(Q(question__icontains=q_word) | Q(answer__icontains=q_word))
+            object_list = Post.objects.filter(Q(user = self.request.user) , Q(question__icontains=q_word))
             
         else:
             object_list = Post.objects.filter(user = self.request.user).order_by('memory','-posted_at')
