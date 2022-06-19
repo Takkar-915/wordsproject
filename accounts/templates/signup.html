@@ -1,47 +1,43 @@
-{% block title %}アカウント登録{% endblock %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>アカウント登録</title>
+</head>      
+      
+<h3>新規アカウント登録画面</h3>
 
-      {% block contents %}
+<form method = "post">
+  {% csrf_token %}
+
+  {% for field in form %}
+    <p>
+
+      {{ field.label_tag }}<br>
+
+      {{ field }}
+
+      {% if field.help_text %}
+        <small style="color: grey">{{ field.help_text }}</small>
+      {% endif %}
+
+      {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+    </p>
+  {% endfor %}
+  <p style="color:red">
+    メールアドレスはパスワードをリセットする際に必要ですが、必須ではありません。<br>
+    学生が作ったwebアプリにメールアドレスを登録することに不安がある方は、スルーしていただいて構いません。
+  </p>
+  <input type="submit" value="登録する">
+</form>
+
+<br>
+<p><a href="{% url 'wordsapp:index' %}">
+  登録をやめてトップページに戻る</a>
+</p>
       
-      <hr>
-      <div class="container">
       
-        <div class="row">
-      
-          <div class="col offset-2">
-            <h3>新規アカウント登録画面</h3>
-      
-            <form method = "post">
-              {% csrf_token %}
-      
-              {% for field in form %}
-               <p>
-      
-                 {{ field.label_tag }}<br>
-      
-                 {{ field }}
-      
-                 {% if field.help_text %}
-                   <small style="color: grey">{{ field.help_text }}</small>
-                 {% endif %}
-      
-                 {% for error in field.errors %}
-                   <p style="color: red">{{ error }}</p>
-                 {% endfor %}
-               </p>
-             {% endfor %}
-              <p style="color:red">
-                ※メールアドレスはパスワードをリセットする際に必要になりますので、
-                登録をお願いします。
-              </p>
-              
-              <input type="submit" value="Sign up">
-            </form>
-            
-            <br>
-            <p><a href="{% url 'wordsapp:index' %}">
-              登録をやめてトップページに戻る</a>
-            </p>
-          </dv>
-        </dv>
-      </dv>
-      {% endblock %}
+</body>
+</html>

@@ -6,15 +6,19 @@ from django.views.generic import CreateView,ListView,UpdateView,DeleteView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from requests import request
-
 from wordsapp.forms import PostForm
 from .models import Category,Post
 from django.db.models import Q
+
+#from wordsapp.function import Question
 
 # Create your views here.
 
 class IndexView(TemplateView):
     template_name = 'index.html'
+
+class DetailsView(TemplateView):
+    template_name = 'details.html'
 
 @method_decorator(login_required, name='dispatch')
 class TopView(ListView):
@@ -27,11 +31,12 @@ class TopView(ListView):
         q_word = self.request.GET.get('query')
 
         if q_word:
-            object_list = Post.objects.filter(user = self.request.user).order_by('-posted_at')
+            object_list = Post.objects.filter(user = self.request.user).order_by('memory','-posted_at')
             object_list = Post.objects.filter(Q(question__icontains=q_word) | Q(answer__icontains=q_word))
             
         else:
-            object_list = Post.objects.filter(user = self.request.user).order_by('-posted_at')
+            object_list = Post.objects.filter(user = self.request.user).order_by('memory','-posted_at')
+            
         return object_list
 
 
@@ -43,11 +48,11 @@ class CreateView(CreateView):
 
     def form_valid(self, form):
         postdata = form.save(commit=False)
-        # 投稿ユーザーのidを取得してモデルのuserフィールドに格納
+        
         postdata.user = self.request.user
-        # 投稿データをデータベースに登録
+        
         postdata.save()
-        # 戻り値はスーパークラスのform_valid()の戻り値(HttpResponseRedirect)
+        
         return super().form_valid(form)
 
 
@@ -60,11 +65,11 @@ class DataUpdateView(UpdateView):
 
     def form_valid(self, form):
         postdata = form.save(commit=False)
-        # 投稿ユーザーのidを取得してモデルのuserフィールドに格納
+        
         postdata.user = self.request.user
-        # 投稿データをデータベースに登録
+        
         postdata.save()
-        # 戻り値はスーパークラスのform_valid()の戻り値(HttpResponseRedirect)
+        
         return super().form_valid(form)
  
 
@@ -80,3 +85,9 @@ class DataDeleteView(DeleteView):
 @method_decorator(login_required, name='dispatch')
 class PostSuccessView(TemplateView):
     template_name ='post_success.html'
+
+
+@method_decorator(login_required, name='dispatch')
+class MiniTestView(ListView):
+    template_name = 'minitest.html'
+    model = Post

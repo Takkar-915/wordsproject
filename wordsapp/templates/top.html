@@ -13,12 +13,12 @@
 
 <form action="" method="get">
     <input name="query" value="{{ request.GET.query }}" type="text">
-    <button type="submit">検索する</button>
+    <button type="submit">英単語を検索する</button>
 </form>
 
 
 
-  <table border="2">
+  <table border="1">
     <tr>
         <th>英単語</th>
         <th>品詞</th>
@@ -32,7 +32,12 @@
             <td>{{ data.question }}</td>
             <td>{{ data.category }}</td>
             <td>{{ data.answer }}</td>
-            <td>{{ data.memory }}</td>
+            {% if data.memory %}
+            <td>{{ 'Yes' }}</td>
+            {% elif data.memory == False %}
+            <td>{{ 'No' }}</td>
+            {% endif %}
+
             <td><a href="{% url 'wordsapp:update' data.pk %}">編集</a></td>
             <td><a href="{% url 'wordsapp:delete' data.pk %}">削除</a></td>
         </tr>

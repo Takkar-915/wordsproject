@@ -30,7 +30,7 @@ class MyLoginSuccessView(TemplateView):
 
 class MyLogoutView(LogoutView):
     template_name = 'logout.html'
-
+    
 
 
 

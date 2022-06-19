@@ -5,9 +5,7 @@
     <title>ログアウト</title>
 </head>
 <body>
-    <form action="" method="post">
-        {% csrf_token %}
-        <button type="submit">ログアウト</button>
-    </form>
+   <h3>ログアウトしました</h3>
+   <p><a href="{% url 'wordsapp:index' %}">トップページへ</a></p>
 </body>
 </html>
