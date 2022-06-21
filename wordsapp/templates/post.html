@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>英単語登録</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %}オリジナル単語帳{% endblock %}
+
+{% block content %}
 <body>
-<h3>英単語を登録してください</h3>
+<h2>英単語を登録してください</h2>
 
 {% block contents %}
 <form method="POST">
@@ -33,4 +32,4 @@
     </form>        
       {% endblock %}
 </body>
-</html>
+{% endblock content %}

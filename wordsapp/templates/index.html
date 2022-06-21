@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>オリジナル単語帳</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %}オリジナル単語帳{% endblock %}
+
+{% block content %}
 <body>
     <h1>オリジナル単語帳作成</h1>
     <p>ブラウザーでオリジナルの単語帳を作ることができます。<a href="{%url 'wordsapp:details'%}">このアプリについて</a></p>
     <p><a href="{%url 'accounts:signup'%}">新規会員登録はこちら</a></p>
-    <p></p><a href="{%url 'accounts:login'%}">ログインはこちら</a></p>
+    <p><a href="{%url 'accounts:login'%}">ログインはこちら</a></p>
     
-</body>
-</html>
+    
+{% endblock content %}

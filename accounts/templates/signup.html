@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>アカウント登録</title>
-</head>      
-      
-<h3>新規アカウント登録画面</h3>
+{% extends 'base.html' %}
 
+{% block title %}オリジナル単語帳{% endblock %}
+
+{% block content %}
+
+<body>
+  <h2>新規アカウント登録</h2>
 <form method = "post">
   {% csrf_token %}
 
@@ -40,4 +39,4 @@
       
       
 </body>
-</html>
+{% endblock content %}

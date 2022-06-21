@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>アカウント登録完了</title>
-</head>      
-<h3>登録が完了しました</h3>
+{% extends 'base.html' %}
+
+{% block title %}オリジナル単語帳{% endblock %}
+
+{% block content %}
+<body>
+<h2>登録が完了しました</h2>
             
 <p><a href="{% url 'accounts:login' %}">ログインはこちら</a><p></p>
       
 </body>
-</html>
+{% endblock content %}

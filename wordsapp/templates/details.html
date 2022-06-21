@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8" />
-    <title>オリジナル単語帳について</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %}オリジナル単語帳{% endblock %}
+
+{% block content %}
 <body>
     <h2>このアプリについて</h2>
     <p>このアプリは、普段の英語学習に役立つものを作りたいという考えから、プログラミング学習もかねて<br>
@@ -16,4 +15,4 @@
 
     <p><a href="{% url 'wordsapp:index' %}">トップページに戻る</a></p>
 </body>
-</html>
+{% endblock content %}

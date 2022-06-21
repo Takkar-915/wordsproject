@@ -84,9 +84,3 @@ class DataDeleteView(DeleteView):
 @method_decorator(login_required, name='dispatch')
 class PostSuccessView(TemplateView):
     template_name ='post_success.html'
-
-
-@method_decorator(login_required, name='dispatch')
-class MiniTestView(ListView):
-    template_name = 'minitest.html'
-    model = Post

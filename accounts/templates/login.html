@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>ログインページ</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %}オリジナル単語帳{% endblock %}
+
+{% block content %}
 <body>
-    <h3>ログインページ</h3>
+    <h2>ログインページ</h2>
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -14,4 +13,4 @@
 
     <p><a href="{% url 'password_reset' %}">パスワードを忘れた</a></p>
 </body>
-</html>
+{% endblock content %}

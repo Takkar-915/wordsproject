@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8" />
-    <title>マイ単語帳</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %}オリジナル単語帳{% endblock %}
+
+{% block content %}
  
 <body>
-    <h3>英単語データ削除確認画面</h3>
+    <h2>英単語データ削除確認画面</h2>
     <form method="post">
         {% csrf_token %}
         <p>英単語   {{ post.question }} を削除しますか？</p>
@@ -15,4 +14,4 @@
 
     <p><a href="{% url 'wordsapp:top' %}">削除せずに戻る</a></p>
 </body>
-</html>
+{% endblock content %}

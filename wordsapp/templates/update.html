@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>英単語登録</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %}オリジナル単語帳{% endblock %}
+
+{% block content %}
 <body>
 <h3>編集画面</h3>
 
@@ -35,4 +34,4 @@
 
       <p><a href="{% url 'wordsapp:top' %}">変更せずに戻る</a></p>
 </body>
-</html>
+{% endblock content %}

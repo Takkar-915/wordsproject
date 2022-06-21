@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>マイ単語帳</title>
-</head>
-<body>
-<h2>マイ単語帳</h2>
-<p><a href="{% url 'accounts:logout' %}">ログアウト</a></p>
-<p><a href="{% url 'wordsapp:post' %}">英単語追加</a></p>
+{% extends 'base.html' %}
 
-</body>
+{% block title %}オリジナル単語帳{% endblock %}
+
+{% block content %}
+<h2 class="mt-4 border-bottom">単語一覧</h2>
+<p>
+    <a href="{% url 'wordsapp:post' %}">英単語追加</a>
+    <a href="{% url 'accounts:logout' %}">ログアウト</a>
+</p>
 
 <form action="" method="get">
     <input name="query" value="{{ request.GET.query }}" type="text">
     <button type="submit">英単語を検索する</button>
 </form>
 
-
-
-  <table border="1">
+  <table class="table table-sm">
+    <thead>
     <tr>
-        <th>英単語</th>
-        <th>品詞</th>
-        <th>意味</th>
-        <th>暗記済み</th>
-        <th>編集</th>
-        <th>削除</th>
+        <th scope="col">英単語</th>
+        <th scope="col">品詞</th>
+        <th scope="col">意味</th>
+        <th scope="col">暗記済み</th>
+        <th scope="col">編集</th>
+        <th scope="col">削除</th>
     </tr>
+    </thead>
     {% for data in object_list %}
         <tr>
             <td>{{ data.question }}</td>
@@ -38,11 +36,9 @@
             <td>{{ 'No' }}</td>
             {% endif %}
 
-            <td><a href="{% url 'wordsapp:update' data.pk %}">編集</a></td>
-            <td><a href="{% url 'wordsapp:delete' data.pk %}">削除</a></td>
+            <td><a href="{% url 'wordsapp:update' data.pk %}" class="btn btn-outline-primary btn-sm">編集</a></td>
+            <td><a href="{% url 'wordsapp:delete' data.pk %}" class="btn btn-outline-danger btn-sm">削除</a></td>
         </tr>
     {% endfor %}
 </table>
-</div>
-</body>
-</html>
+{% endblock content %}

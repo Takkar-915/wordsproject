@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'wordsapp.apps.WordsappConfig',
     'accounts.apps.AccountsConfig',
-
+    'bootstrap4',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
