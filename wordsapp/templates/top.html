@@ -5,14 +5,18 @@
 {% block content %}
 <h2 class="mt-4 border-bottom">単語一覧</h2>
 <p>
-    <a href="{% url 'wordsapp:post' %}">英単語追加</a>
-    <a href="{% url 'accounts:logout' %}">ログアウト</a>
-</p>
-
 <form action="" method="get">
     <input name="query" value="{{ request.GET.query }}" type="text">
-    <button type="submit">英単語を検索する</button>
+    <button type="submit" class="btn btn-primary btn-sm">英単語を検索する</button> 
 </form>
+</p>
+
+<p>
+<button type="button" class="btn btn-primary btn-sm" onclick="location.href='{%url 'wordsapp:post'%}'">英単語追加</button>
+<button type="button" class="btn btn-primary btn-sm" onclick="location.href='{%url 'accounts:logout'%}'">ログアウト</button>
+</p>
+
+
 
   <table class="table table-sm">
     <thead>

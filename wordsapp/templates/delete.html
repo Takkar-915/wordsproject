@@ -6,12 +6,13 @@
  
 <body>
     <h2>英単語データ削除確認画面</h2>
+    <p>
     <form method="post">
         {% csrf_token %}
         <p>英単語   {{ post.question }} を削除しますか？</p>
-        <input type="submit" value="削除する">
+        <input type="submit" class="btn btn-primary btn-sm" value="削除する">
     </form>
-
+    </p>
     <p><a href="{% url 'wordsapp:top' %}">削除せずに戻る</a></p>
 </body>
 {% endblock content %}

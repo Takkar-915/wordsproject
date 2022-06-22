@@ -3,11 +3,17 @@
 {% block title %}オリジナル単語帳{% endblock %}
 
 {% block content %}
+
 <body>
     <h1>オリジナル単語帳作成</h1>
-    <p>ブラウザーでオリジナルの単語帳を作ることができます。<a href="{%url 'wordsapp:details'%}">このアプリについて</a></p>
-    <p><a href="{%url 'accounts:signup'%}">新規会員登録はこちら</a></p>
-    <p><a href="{%url 'accounts:login'%}">ログインはこちら</a></p>
+    <p>
+        <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{%url 'accounts:signup'%}'">アカウント登録</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{%url 'accounts:login'%}'">ログイン</button>
+    </p>
+    <p>ブラウザーでオリジナルの単語帳を作ることができます。</p>
+    <p>重要な単語や覚えられない単語などを整理しましょう！</p>
+    <p><a href="{%url 'wordsapp:details'%}">このアプリについて</a></p>
     
     
+
 {% endblock content %}

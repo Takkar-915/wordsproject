@@ -7,6 +7,7 @@
 <h3>編集画面</h3>
 
 {% block contents %}
+<p>
 <form method="POST">
         {% csrf_token %}
         <table>
@@ -28,8 +29,9 @@
         </tr>
         </table>
         <hr>
-        <button type="submit">変更する</button>
+        <button type="submit" class="btn btn-primary btn-sm">変更する</button>
     </form>        
+    </p>
       {% endblock %}
 
       <p><a href="{% url 'wordsapp:top' %}">変更せずに戻る</a></p>

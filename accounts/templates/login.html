@@ -5,12 +5,13 @@
 {% block content %}
 <body>
     <h2>ログインページ</h2>
+    <p>
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">ログイン</button>
+        <button type="submit" class="btn btn-primary btn-sm">ログイン</button>
     </form>
-
+    </p>
     <p><a href="{% url 'password_reset' %}">パスワードを忘れた</a></p>
 </body>
 {% endblock content %}
