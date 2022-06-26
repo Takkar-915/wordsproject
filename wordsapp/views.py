@@ -1,4 +1,3 @@
-from unicodedata import category
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
@@ -37,7 +36,6 @@ class TopView(ListView):
             object_list = Post.objects.filter(user = self.request.user).order_by('memory','-posted_at')
             
         return object_list
-
 
 @method_decorator(login_required, name='dispatch')
 class CreateView(CreateView):

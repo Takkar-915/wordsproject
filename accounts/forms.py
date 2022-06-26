@@ -1,5 +1,6 @@
 # UserCreationFormクラスをインポート
 from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib.auth.forms import forms as auth_forms
 
 
@@ -9,8 +10,10 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         
+        #連携するUserモデル 
         model = CustomUser
         
+        #フォームで使用するフィールドを指定
         fields = ('username', 'email', 'password1', 'password2')
 
 class LoginForm(CustomUserCreationForm):

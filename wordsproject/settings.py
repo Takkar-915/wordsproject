@@ -21,7 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c4!1v&gwr%o2g%ccak5&o+2c$w8eu%&$ot%bhi$@0lyen=uijz'
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,9 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
     'wordsapp.apps.WordsappConfig',
     'accounts.apps.AccountsConfig',
-    'bootstrap4',
+    
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
