@@ -21,11 +21,6 @@ urlpatterns = [
         auth_views.LoginView.as_view(template_name = 'login.html'),
         name = 'login'),
 
-    path('login_success/',
-        views.MyLoginSuccessView.as_view(),
-        name='login_success'),
-
-
     # ログアウト用のテンプレートをレンダリング
     path('logout/',
         auth_views.LogoutView.as_view(template_name = 'logout.html'),

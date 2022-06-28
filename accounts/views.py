@@ -31,11 +31,6 @@ class SignUpSuccessView(TemplateView):
 class MyLoginView(LoginView):
     form_class = forms.LoginForm
     template_name = 'login.html'
-    success_url = reverse_lazy('accounts:login_success')
-
-
-class MyLoginSuccessView(TemplateView):
-    template_name = 'login_success.html'
 
 
 class MyLogoutView(LogoutView):

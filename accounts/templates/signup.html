@@ -4,6 +4,12 @@
 
 <body>
   <h2>新規アカウント登録</h2>
+    
+  <p style="color:red">
+    ユーザ名、パスワードを登録してしてください。<br>
+    メールアドレスはパスワードをリセットする際に必要ですが、必須ではありません。
+  </p>
+
 <form method = "post">
   {% csrf_token %}
 
@@ -28,10 +34,7 @@
       {% endfor %}
     </p>
   {% endfor %}
-  <p style="color:red">
-    メールアドレスはパスワードをリセットする際に必要ですが、必須ではありません。<br>
-    学生が作ったwebアプリにメールアドレスを登録することに不安がある方は、スルーしていただいて構いません。
-  </p>
+
 
   <input type="submit" class="btn btn-primary btn-sm" value="登録する">
 
