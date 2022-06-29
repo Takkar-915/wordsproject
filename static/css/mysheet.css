@@ -7,9 +7,3 @@ p {
     font-size: 16px; /* フォントのサイズを指定する */
     line-height: 30px; /* 行の高さを指定する */
 }
-
-.btn btn-primary btn-sm {
-    padding-bottom: 12px;
-}
-
-

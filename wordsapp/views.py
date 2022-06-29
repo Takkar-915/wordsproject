@@ -9,8 +9,6 @@ from wordsapp.forms import PostForm
 from .models import Category,Post
 from django.db.models import Q
 
-#from wordsapp.function import Question
-
 # Create your views here.
 
 class IndexView(TemplateView):
