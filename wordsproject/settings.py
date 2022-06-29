@@ -146,6 +146,6 @@ LOGIN_REDIRECT_URL = 'wordsapp:top'
 EMAIL_HOST = 'smtp.gmail.com' 
 EMAIL_USE_TLS = True 
 EMAIL_HOST_USER = 'yurisuki915@gmail.com' 
-EMAIL_HOST_PASSWORD = 'abzyjvtgqtfuoveb' 
+EMAIL_HOST_PASSWORD = '' 
 EMAIL_PORT = 587 
 ACCOUNT_EMAIL_VERIFICATION = 'none' 
