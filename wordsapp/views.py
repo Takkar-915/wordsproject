@@ -41,13 +41,19 @@ class CreateView(CreateView):
     template_name = 'post.html'
     success_url = reverse_lazy('wordsapp:top')
 
+    #CreateViewクラスのform_valid()をオーバーライド
     def form_valid(self, form):
+
+        #commit=FalseでPOSTされたデータを取得する
         postdata = form.save(commit=False)
         
+        #投稿者のidを取得し、モデルのuserフィールドに格納
         postdata.user = self.request.user
         
+        #投稿データをデータベースに登録
         postdata.save()
         
+        #戻り値はスーパークラスのform_valid()の戻り値
         return super().form_valid(form)
 
 

@@ -1,7 +1,6 @@
 from turtle import title
 from unicodedata import category
 from django.db import models
-from psutil import users
 from accounts.models import CustomUser
 
 # Create your models here.
