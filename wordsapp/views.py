@@ -75,8 +75,3 @@ class DataDeleteView(DeleteView):
     template_name = 'delete.html'
     model = Post
     success_url = reverse_lazy('wordsapp:top')
-
-
-@method_decorator(login_required, name='dispatch')
-class PostSuccessView(TemplateView):
-    template_name ='post_success.html'
